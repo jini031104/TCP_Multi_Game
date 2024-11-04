@@ -4,6 +4,8 @@ import { onError } from './onError.js';
 
 export const onConnection = (socket) => {
     console.log(`클라이언트와 연결 됐다: ${socket.remoteAddress}:${socket.remotePort}`);
+
+    socket.buffer = Buffer.alloc(0);
     socket.on('data', onData(socket));
     socket.on('end', onEnd(socket));
     socket.on('error', onError(socket));
