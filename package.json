@@ -1,0 +1,29 @@
+{
+    "name": "tcp_multi_game",
+    "version": "1.0.0",
+    "description": "",
+    "main": "src/server.js",
+    "type": "module",
+    "scripts": {
+        "start": "node src/server.js",
+        "dev": "nodemon src/server.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/jini031104/TCP_Multi_Game.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/jini031104/TCP_Multi_Game/issues"
+    },
+    "homepage": "https://github.com/jini031104/TCP_Multi_Game#readme",
+    "devDependencies": {
+        "nodemon": "^3.1.7",
+        "prettier": "^3.3.3"
+    },
+    "dependencies": {
+        "dotenv": "^16.4.5"
+    }
+}
