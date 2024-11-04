@@ -18,7 +18,6 @@ export const packetParser = (data) => {
     const clientVersion = packet.clientVersion;
 
     if (clientVersion !== CLIENT_VERSION) {
-        console.error('클라이언트 버전이 일치하지 않다.');
         throw Error();
     }
 

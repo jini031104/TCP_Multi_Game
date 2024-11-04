@@ -7,8 +7,7 @@ const handlers = {
 };
 
 export const getProtoTypeNameByHandlerId = (handlerId) => {
-    if (!handlers[handlerId] || handlers[handlerId].protoType) {
-        console.error(`프로토타입을 찾을 수 없다: ID ${handlerId}`);
+    if (!handlers[handlerId] || !handlers[handlerId].protoType) {
         throw Error();
     }
     return handlers[handlerId].protoType;
