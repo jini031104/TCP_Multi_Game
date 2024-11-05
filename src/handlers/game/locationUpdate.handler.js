@@ -8,14 +8,16 @@ const locationUpdateHandler = ({ socket, userId, payload }) => {
             console.error('게임 세션을 찾을 수 없다.');
         }
 
-        console.log(gameSession);
+        // console.log(gameSession);
         const user = gameSession.getUser(userId);
         if (!user) {
             console.error('유저를 찾을 수 없다.');
         }
         user.updatePosition(x, y);
 
-        socket.write('');
+        const locationData = gameSession.getAllLocation(userId);
+
+        socket.write(locationData);
     } catch (error) {
         console.error(error);
     }

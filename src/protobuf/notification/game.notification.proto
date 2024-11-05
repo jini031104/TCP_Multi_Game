@@ -7,7 +7,7 @@ message LocationUpdate {
 
     message UserLocation {
         string id = 1;
-        string playerId = 2;
+        uint32 playerId = 2;
         float x = 3;
         float y = 4;
     }
