@@ -1,4 +1,6 @@
+import dbPool from '../db/database.js';
 import { addGameSession } from '../session/game.session.js';
+import { testDbConnection } from '../utils/db/testDbConnection.js';
 import { loadProtos } from './loadProto.js';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -8,8 +10,9 @@ const initServer = async () => {
     try {
         await loadProtos();
         const gameSession = addGameSession(gameId);
+        console.log(gameSession);
 
-        console.log('=============', gameSession);
+        await testDbConnection(dbPool);
     } catch (error) {
         console.error(error);
         process.exit(1);
