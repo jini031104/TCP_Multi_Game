@@ -2,7 +2,7 @@ import { DB_HOST, DB_NAME, DB_PASSWORD, DB_PORT, DB_USER } from '../constants/en
 
 export const config = {
     database: {
-        name: DB_NAME,
+        database: DB_NAME,
         host: DB_HOST,
         port: DB_PORT,
         user: DB_USER,
