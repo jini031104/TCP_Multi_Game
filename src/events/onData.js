@@ -1,6 +1,8 @@
 import { PACKET_TYPE, PACKET_TYPE_LENGTH, TOTAL_LENGTH } from '../constants/header.js';
 import { getHandlerById } from '../handlers/index.js';
+import { getProtoMessages } from '../init/loadProto.js';
 import { packetParser } from '../utils/parser/packetParser.js';
+import { getUserBySocket } from './../session/user.session.js';
 
 export const onData = (socket) => (data) => {
     socket.buffer = Buffer.concat([socket.buffer, data]);
@@ -15,6 +17,13 @@ export const onData = (socket) => (data) => {
             socket.buffer = socket.buffer.subarray(length);
             try {
                 switch (packetType) {
+                    case PACKET_TYPE.PING:
+                        const protoMessage = getProtoMessages();
+                        const Ping = protoMessage.common.Ping;
+                        const pingPacket = Ping.decode(packet);
+                        const user = getUserBySocket(socket);
+                        user.handlePong(pingPacket);
+                        break;
                     case PACKET_TYPE.NORMAL: {
                         const { handlerId, userId, payload } = packetParser(packet);
                         const handler = getHandlerById(handlerId);
